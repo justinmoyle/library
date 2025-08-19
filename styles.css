@@ -1,0 +1,12 @@
+#new-book-btn {
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding: 25px;
+  background-color: blue;
+  color: white;
+  font-size: 25px;
+  border-radius: 15px;
+  border: none;
+  cursor: pointer;
+}
