@@ -9,10 +9,20 @@ function Book(title, author, pages, read) {
 }
 
 function render(){
-    let libraryBook = document.querySelector("library");
-    for (let i = 0; i < myLibrary.length; i++){
-        console.log(myLibrary[i]);
-    }
+    let libraryBook = document.querySelector(".library");
+    libraryBook.innerHTML = "";
+    
+    myLibrary.forEach(book => {
+        const card = document.createElement("div");
+        card.classList.add("book-card");
+        card.innerHTML = `
+            <h3>${book.title}</h3>
+            <p><strong>Author:</strong> ${book.author}</p>
+            <p><strong>Pages:</strong> ${book.pages}</p>
+            <p><strong>Status:</strong> ${book.read ? 'Read' : 'Not Read'}</p>
+        `;
+        libraryBook.appendChild(card);
+    });
 }
 
 function addBookToLibrary() {
