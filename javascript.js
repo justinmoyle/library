@@ -12,10 +12,11 @@ function render(){
     let libraryBook = document.querySelector(".library");
     libraryBook.innerHTML = "";
     
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const card = document.createElement("div");
         card.classList.add("book-card");
         card.innerHTML = `
+            <button class="delete-btn" data-index="${index}">x</button>
             <h3>${book.title}</h3>
             <p><strong>Author:</strong> ${book.author}</p>
             <p><strong>Pages:</strong> ${book.pages}</p>
@@ -23,7 +24,20 @@ function render(){
         `;
         libraryBook.appendChild(card);
     });
+    deleteBook();
 }
+
+function deleteBook(){
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    deleteButtons.forEach(button => {
+        button.addEventListener("click", function() {
+            const index = this.dataset.index;
+            myLibrary.splice(index, 1);
+            render();
+        });
+    });
+}
+
 
 function addBookToLibrary() {
     let title = document.querySelector("#title").value;
